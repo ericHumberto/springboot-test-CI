@@ -1,23 +1,67 @@
 plugins {
-	id 'org.springframework.boot' version '2.6.4'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-	id 'java'
+    id 'org.springframework.boot' version '2.6.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'jacoco'
+  	id 'org.sonarqube' version '2.8'
 }
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '14'
+sourceCompatibility = '11.0.2'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
+}
+
+sonarqube {
+    properties {
+        property 'sonar.projectName', 'Example of SonarQube Scanner for Gradle Usage'
+		property 'sonar.projectKey', 'test-springboot-ci'
+		property 'sonar.host.url', 'http://ec2-3-237-171-232.compute-1.amazonaws.com:9000'
+		property 'sonar.login', '8f91c169ef788423df36fcdf969a61da552d4a9a'
+		property 'sonar.projectKey', 'test-springboot-ci'
+        property 'sonar.jacoco.reportPaths', '${jacoco.destinationFile}'
+        property 'sonar.groovy.jacoco.reportPath', '${jacoco.destinationFile}'
+        property "sonar.coverage.jacoco.xmlReportPaths", "${buildDir}/reports/jacoco/test/*.xml"
+        property "sonar.java.coveragePlugin", "jacoco"
+    }
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.ow2.asm:asm:9.1'
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
+
+jacoco {
+    toolVersion = "0.8.6"
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                counter = 'BRANCH'
+                value = 'COVEREDRATIO'
+                minimum = 0.8
+            }
+        }
+    }
+}
+
+//project.tasks["sonarqube"].dependsOn "anotherTask"
+
