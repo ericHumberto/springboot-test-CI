@@ -18,7 +18,7 @@ sonarqube {
     properties {
         property 'sonar.projectName', 'Example of SonarQube Scanner for Gradle Usage'
 		property 'sonar.projectKey', 'test-springboot-ci'
-		property 'sonar.host.url', 'http://localhost:9000'
+		property 'sonar.host.url', 'http://sonarqube:9000'
 		property 'sonar.login', '8f91c169ef788423df36fcdf969a61da552d4a9a'
 		property 'sonar.projectKey', 'test-springboot-ci'
         property 'sonar.jacoco.reportPaths', '${jacoco.destinationFile}'
