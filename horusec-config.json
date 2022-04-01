@@ -35,7 +35,7 @@
   "horusecCliMonitorRetryInSeconds": 15,
   "horusecCliPrintOutputType": "",
   "horusecCliProjectPath": "/home/erics/Documents/projects/cit/MB/springboot-test-CI",
-  "horusecCliRepositoryAuthorization": "00000000-0000-0000-0000-000000000000",
+  "horusecCliRepositoryAuthorization": "f0b634ad-50f4-4ae3-b4ff-ca6d823bb3f5",
   "horusecCliRepositoryName": "springboot-test-CI",
   "horusecCliReturnErrorIfFoundVulnerability": false,
   "horusecCliRiskAcceptHashes": null,
