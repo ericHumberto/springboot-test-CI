@@ -6,22 +6,26 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'gradle assemble'
+                sh './gradlew assemble'
             }
         }
          stage('Test') {
             steps {
-                sh 'gradle test'
+                sh './gradlew test'
             }
         }
         stage('Build Docker Image') {
             steps {
-                sh 'gradle docker'
+                sh './gradlew docker'
             }
         }
-        stage('Run Docker Image') {
+        stage('Push Docker Image') {
+            environment {
+                DOCKER_HUB_LOGIN = credentials('dockerhub')
+            }
             steps {
-                sh 'gradle dockerRun'
+                sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
+                sh './gradlew dockerPush'
             }
         }
     }
