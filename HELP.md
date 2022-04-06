@@ -1,7 +1,7 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'com.example.springboot-test-CI' is invalid and this project uses 'com.example.springboottestCI' instead.
+* The original package name 'com.example.springboot-test-ci' is invalid and this project uses 'com.example.springboottestCI' instead.
 
 # Getting Started
 

@@ -34,9 +34,9 @@
   "horusecCliLogFilePath": "/tmp/horusec-2022-03-31-22-35-53.log",
   "horusecCliMonitorRetryInSeconds": 15,
   "horusecCliPrintOutputType": "",
-  "horusecCliProjectPath": "/home/erics/Documents/projects/cit/MB/springboot-test-CI",
+  "horusecCliProjectPath": "/home/erics/Documents/projects/cit/MB/springboot-test-ci",
   "horusecCliRepositoryAuthorization": "f0b634ad-50f4-4ae3-b4ff-ca6d823bb3f5",
-  "horusecCliRepositoryName": "springboot-test-CI",
+  "horusecCliRepositoryName": "springboot-test-ci",
   "horusecCliReturnErrorIfFoundVulnerability": false,
   "horusecCliRiskAcceptHashes": null,
   "horusecCliSeveritiesToIgnore": [
