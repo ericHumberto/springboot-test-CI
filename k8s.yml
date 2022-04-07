@@ -21,14 +21,6 @@ spec:
         image: andersoncmciet/springboot-test-ci:0.0.1-SNAPSHOT
         ports:
         - containerPort: 8080
-        livenessProbe:
-          httpGet:
-            path: /api/hello
-            port: 8080
-          initialDelaySeconds: 3
-          timeoutSeconds: 1
-          successThreshold: 1
-          failureThreshold: 1
         resources:
           requests:
             cpu: "150m"

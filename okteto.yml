@@ -27,7 +27,7 @@ deploy:
 # The dev section defines how to activate a development container
 # More info: https://www.okteto.com/docs/reference/manifest/#dev
 dev:
-  vote:
+  api:
     image: okteto/gradle:6.5
     command: bash
     workdir: /usr/src/app
