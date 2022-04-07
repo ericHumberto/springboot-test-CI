@@ -43,6 +43,7 @@ pipeline {
                 okteto login --token $OKTETO_SECRET
                 okteto namespace $OKTETO_NAMESPACE
                 okteto deploy
+                okteto restart
                 '''
             }
         }
