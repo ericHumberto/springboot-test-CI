@@ -8,7 +8,7 @@ dev:
     sync:
       - .:/usr/src/app
     forward:
-      - 8080:8080
+      - 9090:9090
       - 5005:5005
 
 # The build section defines how to build the images of your development environment
@@ -41,5 +41,5 @@ deploy:
 #     environment:
 #       - name=$USER
 #     forward:
-#       - 8080:80
+#       - 9090:80
 
