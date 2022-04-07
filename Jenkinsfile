@@ -28,5 +28,18 @@ pipeline {
                 sh './gradlew dockerPush'
             }
         }
+        stage('Promote') {
+            environment {
+                OKTETO_NAMESPACE = credentials('okteto-namespace')
+                OKTETO_SECRET = credentials('okteto-secret')
+            }
+            steps {
+                sh '''
+                okteto login --token ${SECRET}
+                okteto namespace ${OKTETO_NAMESPACE}
+                okteto up
+                '''
+            }
+        }
     }
 }
