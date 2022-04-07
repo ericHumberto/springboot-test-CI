@@ -19,6 +19,11 @@ pipeline {
                 sh './gradlew docker'
             }
         }
+        stage('SCA') {
+            steps {
+                sh 'trivy image andersoncmciet/springboot-test-ci:0.0.1-SNAPSHOT'
+            }
+        }
         stage('Push Docker Image') {
             environment {
                 DOCKER_HUB_LOGIN = credentials('dockerhub')
