@@ -40,8 +40,8 @@ pipeline {
             }
             steps {
                 sh '''
-                okteto login --token ${SECRET}
-                okteto namespace ${OKTETO_NAMESPACE}
+                okteto login --token $OKTETO_SECRET
+                okteto namespace $OKTETO_NAMESPACE
                 okteto up
                 '''
             }
