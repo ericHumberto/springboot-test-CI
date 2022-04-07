@@ -31,10 +31,15 @@ sonarqube {
     }
 }
 
+configurations {
+    dev
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    dev("org.springframework.boot:spring-boot-devtools")
     implementation 'org.ow2.asm:asm:9.1'
 }
 
