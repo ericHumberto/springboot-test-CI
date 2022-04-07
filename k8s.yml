@@ -23,15 +23,7 @@ spec:
         - containerPort: 8080
         livenessProbe:
           httpGet:
-            path: /health
-            port: 8080
-          initialDelaySeconds: 3
-          timeoutSeconds: 1
-          successThreshold: 1
-          failureThreshold: 1
-        readinessProbe:
-          httpGet:
-            path: /ready
+            path: /api/hello
             port: 8080
           initialDelaySeconds: 3
           timeoutSeconds: 1
