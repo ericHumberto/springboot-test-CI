@@ -1,6 +1,6 @@
 name: springboot-test-ci
 dev:
-  api:
+  springboot-test-ci:
     image: okteto/gradle:6.5
     command: bash
     volumes:
