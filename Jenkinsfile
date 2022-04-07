@@ -42,8 +42,8 @@ pipeline {
                 sh '''
                 okteto login --token $OKTETO_SECRET
                 okteto namespace $OKTETO_NAMESPACE
+                okteto build
                 okteto deploy
-                okteto restart
                 '''
             }
         }

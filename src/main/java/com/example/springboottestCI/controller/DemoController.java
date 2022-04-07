@@ -12,4 +12,9 @@ public class DemoController {
     public String hello() {
         return "hello";
     }
+
+    @GetMapping(path = "/bye")
+    public String bye() {
+        return "bye";
+    }
 }
