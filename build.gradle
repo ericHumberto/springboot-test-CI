@@ -10,7 +10,8 @@ plugins {
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11.0.2'
+sourceCompatibility = 11
+targetCompatibility = 11
 
 repositories {
     mavenCentral()
@@ -84,7 +85,7 @@ docker {
 dockerRun {
     name "${project.name}-container"
     image imageName
-    ports '8081:8081'
+    ports '8080:8080'
     env 'SPRING_PROFILES_ACTIVE': 'dev'
     daemonize true
     clean false
