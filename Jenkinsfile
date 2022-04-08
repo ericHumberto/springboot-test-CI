@@ -42,9 +42,6 @@ pipeline {
                 sh '''
                 okteto login --token $OKTETO_SECRET
                 okteto namespace $OKTETO_NAMESPACE
-                okteto build
-                okteto deploy
-                kubectl apply -f k8s.yml
                 kubectl rollout status deployment.apps/springboot-test-ci
                 '''
             }
