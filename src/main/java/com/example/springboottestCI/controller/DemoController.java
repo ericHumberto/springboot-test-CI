@@ -17,4 +17,9 @@ public class DemoController {
     public String bye() {
         return "bye";
     }
+
+    @GetMapping(path = "/v2/hello")
+    public String helloV2() {
+        return "helloV2";
+    }
 }
