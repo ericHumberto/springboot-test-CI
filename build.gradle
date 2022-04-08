@@ -19,11 +19,11 @@ repositories {
 
 sonarqube {
     properties {
-        property 'sonar.projectName', 'Example of SonarQube Scanner for Gradle Usage'
-		property 'sonar.projectKey', 'springboot-test-ci'
-		property 'sonar.host.url', 'http://sonarqube:9000'
-		property 'sonar.login', '9647d74684b5ac3580ceec55c74c7b32972dd130'
-		property 'sonar.projectKey', 'springboot-test-ci'
+        property 'sonar.projectName', 'Projeto de exemplo de esteira CI/CD'
+        property 'sonar.projectKey', 'test-springboot-ci'
+        property 'sonar.host.url', 'http://localhost:9000'
+        property 'sonar.login', '8f91c169ef788423df36fcdf969a61da552d4a9a'
+        property 'sonar.projectKey', 'test-springboot-ci'
         property 'sonar.jacoco.reportPaths', '${jacoco.destinationFile}'
         property 'sonar.groovy.jacoco.reportPath', '${jacoco.destinationFile}'
         property "sonar.coverage.jacoco.xmlReportPaths", "${buildDir}/reports/jacoco/test/*.xml"
