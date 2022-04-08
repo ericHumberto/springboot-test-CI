@@ -44,6 +44,7 @@ pipeline {
                 okteto namespace $OKTETO_NAMESPACE
                 okteto kubeconfig
                 kubectl apply -f k8s.yml
+                kubectl rollout restart deployment.apps/springboot-test-ci
                 kubectl rollout status deployment.apps/springboot-test-ci
                 '''
             }
