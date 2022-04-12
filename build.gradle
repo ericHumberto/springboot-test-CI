@@ -4,11 +4,14 @@ plugins {
     id 'java'
     id 'jacoco'
   	id 'org.sonarqube' version '2.8'
+    id "com.palantir.docker" version "0.26.0"
+    id "com.palantir.docker-run" version "0.26.0"
 }
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11.0.2'
+sourceCompatibility = 11
+targetCompatibility = 11
 
 repositories {
     mavenCentral()
@@ -17,10 +20,17 @@ repositories {
 sonarqube {
     properties {
         property 'sonar.projectName', 'Projeto de exemplo de esteira CI/CD'
+<<<<<<< HEAD
 		property 'sonar.projectKey', 'test-springboot-ci'
 		property 'sonar.host.url', 'http://localhost:9000'
 		property 'sonar.login', '5e923bb1f9b993952e9b0f021595b34673d79129'
 		property 'sonar.projectKey', 'test-springboot-ci'
+=======
+        property 'sonar.projectKey', 'test-springboot-ci'
+        property 'sonar.host.url', 'http://localhost:9000'
+        property 'sonar.login', '8f91c169ef788423df36fcdf969a61da552d4a9a'
+        property 'sonar.projectKey', 'test-springboot-ci'
+>>>>>>> 54e54e4857be0249125cf8379a16a8897d2a1809
         property 'sonar.jacoco.reportPaths', '${jacoco.destinationFile}'
         property 'sonar.groovy.jacoco.reportPath', '${jacoco.destinationFile}'
         property "sonar.coverage.jacoco.xmlReportPaths", "${buildDir}/reports/jacoco/test/*.xml"
@@ -28,10 +38,16 @@ sonarqube {
     }
 }
 
+configurations {
+    dev
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator:2.6.6'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    dev("org.springframework.boot:spring-boot-devtools")
     implementation 'org.ow2.asm:asm:9.1'
 }
 
@@ -47,6 +63,7 @@ bootRun {
     if (project.hasProperty('args')) {
         args project.args.split(',')
     }
+    
 }
 
 jacocoTestReport {
@@ -71,3 +88,19 @@ jacocoTestCoverageVerification {
 
 //project.tasks["sonarqube"].dependsOn "anotherTask"
 
+String imageName = "andersoncmciet/${project.name}:$version"
+docker {
+    dockerfile project.file('Dockerfile')
+    name imageName
+    files bootJar.archiveFile.get()
+    buildArgs(['JAR_FILE': "${bootJar.archiveFileName.get()}"])
+}
+
+dockerRun {
+    name "${project.name}-container"
+    image imageName
+    ports '9090:9090'
+    env 'SPRING_PROFILES_ACTIVE': 'dev'
+    daemonize true
+    clean false
+}
