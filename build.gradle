@@ -19,7 +19,7 @@ sonarqube {
         property 'sonar.projectName', 'Projeto de exemplo de esteira CI/CD'
 		property 'sonar.projectKey', 'test-springboot-ci'
 		property 'sonar.host.url', 'http://localhost:9000'
-		property 'sonar.login', '8f91c169ef788423df36fcdf969a61da552d4a9a'
+		property 'sonar.login', '5e923bb1f9b993952e9b0f021595b34673d79129'
 		property 'sonar.projectKey', 'test-springboot-ci'
         property 'sonar.jacoco.reportPaths', '${jacoco.destinationFile}'
         property 'sonar.groovy.jacoco.reportPath', '${jacoco.destinationFile}'
