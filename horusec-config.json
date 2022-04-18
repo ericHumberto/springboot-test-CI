@@ -18,7 +18,7 @@
   },
   "horusecCliCustomRulesPath": "",
   "horusecCliDisableDocker": false,
-  "horusecCliEnableCommitAuthor": true,
+  "horusecCliEnableCommitAuthor": false,
   "horusecCliEnableGitHistoryAnalysis": true,
   "horusecCliEnableInformationSeverity": true,
   "horusecCliEnableOwaspDependencyCheck": true,
