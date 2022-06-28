@@ -1,4 +1,4 @@
-name: Java SpringBoot CI/CD
+name: Java Spring Boot CI/CD
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
@@ -24,13 +24,13 @@ jobs:
           path: build/test-results/test/TEST-*.xml # Path to test results
           reporter: java-junit
       - name: Run integration tests
-        run: ./gradlew testIntegration
+        run: ./gradlew test
       - name: Report Tests
         uses: dorny/test-reporter@v1
         if: success() || failure() # run this step even if previous step failed
         with:
           name: Report for Integration tests # Name of the check run which will be created
-          path: build/test-results/testIntegration/TEST-*.xml # Path to test results
+          path: build/test-results/test/TEST-*.xml # Path to test results
           reporter: java-junit
       
   sonarqube:
