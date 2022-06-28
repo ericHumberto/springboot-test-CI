@@ -21,7 +21,7 @@ sonarqube {
     properties {
         property 'sonar.projectName', 'Projeto de exemplo de esteira CI/CD'
 	property 'sonar.projectKey', 'test-springboot-ci'
-	property 'sonar.host.url', 'http://localhost:9000'
+	property 'sonar.host.url', 'http://ec2-44-204-208-231.compute-1.amazonaws.com:9000/'
 	property 'sonar.login', '5e923bb1f9b993952e9b0f021595b34673d79129'
         property 'sonar.jacoco.reportPaths', '${jacoco.destinationFile}'
         property 'sonar.groovy.jacoco.reportPath', '${jacoco.destinationFile}'
@@ -39,7 +39,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-actuator:2.6.6'
     implementation 'org.springdoc:springdoc-openapi-ui:1.5.10'
-    implementation 'org.javassist.javassist:3.23.1-GA'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     dev("org.springframework.boot:spring-boot-devtools")
     implementation 'org.ow2.asm:asm:9.1'
