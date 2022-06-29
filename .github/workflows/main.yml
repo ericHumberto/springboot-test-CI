@@ -47,18 +47,18 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
   
-  horusec:
-    name: SAST
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      actions: read
-      contents: read
-      security-events: write
-    steps: 
-      - name: Checkout Repo
-        uses: actions/checkout@master
-      - name: SAST - Running Horusec Security
-        run: |
-          curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
-          horusec start -p="./" -e="true"  
+#   horusec:
+#     name: SAST
+#     needs: build
+#     runs-on: ubuntu-latest
+#     permissions:
+#       actions: read
+#       contents: read
+#       security-events: write
+#     steps: 
+#       - name: Checkout Repo
+#         uses: actions/checkout@master
+#       - name: SAST - Running Horusec Security
+#         run: |
+#           curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
+#           horusec start -p="./" -e="true"  
