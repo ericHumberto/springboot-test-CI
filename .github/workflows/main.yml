@@ -16,8 +16,6 @@ jobs:
           cache: 'gradle'
       - name: Build with gradle and run tests
         run: ./gradlew build --no-daemon
-    
-      - uses: actions/checkout@v1
       - name: Report Tests
         uses: dorny/test-reporter@v1
         if: success() || failure() # run this step even if previous step failed
