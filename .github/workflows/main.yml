@@ -18,23 +18,22 @@ jobs:
         run: ./gradlew build --no-daemon
     
       - uses: actions/checkout@v1
-      - run: ls -l
-#       - name: Report Tests
-#         uses: dorny/test-reporter@v1
-#         if: success() || failure() # run this step even if previous step failed
-#         with:
-#           name: Report unit and component tests # Name of the check run which will be created
-#           path: build/test-results/test/TEST-*.xml # Path to test results
-#           reporter: java-junit
-#       - name: Run integration tests
-#         run: ./gradlew test
-#       - name: Report Tests
-#         uses: dorny/test-reporter@v1
-#         if: success() || failure() # run this step even if previous step failed
-#         with:
-#           name: Report for Integration tests # Name of the check run which will be created
-#           path: build/test-results/test/TEST-*.xml # Path to test results
-#           reporter: java-junit
+      - name: Report Tests
+        uses: dorny/test-reporter@v1
+        if: success() || failure() # run this step even if previous step failed
+        with:
+          name: Report unit and component tests # Name of the check run which will be created
+          path: build/test-results/test/TEST-*.xml # Path to test results
+          reporter: java-junit
+      - name: Run integration tests
+        run: ./gradlew test
+      - name: Report Tests
+        uses: dorny/test-reporter@v1
+        if: success() || failure() # run this step even if previous step failed
+        with:
+          name: Report for Integration tests # Name of the check run which will be created
+          path: build/test-results/test/TEST-*.xml # Path to test results
+          reporter: java-junit
       
   sonarqube:
     needs: build
@@ -58,22 +57,19 @@ jobs:
 #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 #         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         
-        
 
-        
-  
-#   horusec:
-#     name: SAST
-#     needs: build
-#     runs-on: ubuntu-latest
-#     permissions:
-#       actions: read
-#       contents: read
-#       security-events: write
-#     steps: 
-#       - name: Checkout Repo
-#         uses: actions/checkout@master
-#       - name: SAST - Running Horusec Security
-#         run: |
-#           curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
-#           horusec start -p="./" -e="true"  
+  horusec:
+    name: SAST
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    steps: 
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: SAST - Running Horusec Security
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
+          horusec start -p="./" -e="true"  
